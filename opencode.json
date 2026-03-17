@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "anthropic/claude-opus-4-5",
+  "small_model": "anthropic/claude-sonnet-4-5",
+
+  "provider": {
+    "anthropic": {
+      "options": {
+        "apiKey": "{env:ANTHROPIC_API_KEY}",
+        "timeout": 600000,
+        "chunkTimeout": 60000,
+        "setCacheKey": true
+      }
+    }
+  },
+
+  "mcp": {
+    "ai-memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true
+    }
+  },
+
+  "default_agent": "architect",
+
+  "permission": {
+    "edit": "allow",
+    "bash": "ask",
+    "webfetch": "allow"
+  },
+
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 15000
+  },
+
+  "watcher": {
+    "ignore": ["node_modules/**", ".git/**", "dist/**", "*.svg", "*.png"]
+  },
+
+  "instructions": [
+    "AGENTS.md"
+  ]
+}
